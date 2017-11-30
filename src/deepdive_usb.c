@@ -38,7 +38,6 @@
 #include "deepdive_dev_tracker.h"
 #include "deepdive_dev_watchman.h"
 
-#include <json/json.h>
 
 #include <stdio.h>
 #include <errno.h>
@@ -113,6 +112,7 @@ static int decompress(const char * input, int ilen, char * output, int olen) {
   return len;
 }
 
+/*
 // Read an array from a json array data structure
 static int json_read_arr_dbl(json_object * jobj, float *data, size_t len) {
   // Check that this is an array
@@ -205,7 +205,7 @@ static int json_parse(struct Tracker * tracker, const char* data) {
   tracker->cal.timestamp = 1;
   printf("Read calibration data for tracker %s\n", tracker->serial);
 }
-
+*/
 // Read the tracker configuration (sensor extrinsics and imu bias/scale)
 static int get_config(struct Tracker * tracker, int send_extra_magic) {
   int ret, count = 0, size = 0;
@@ -280,7 +280,7 @@ static int get_config(struct Tracker * tracker, int send_extra_magic) {
   fclose(f);
   */
   // Parse the JSON data structure
-  json_parse(tracker, uncompressed_data);
+  //json_parse(tracker, uncompressed_data);
   return 0;
 }
 
